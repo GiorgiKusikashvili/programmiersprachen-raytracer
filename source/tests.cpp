@@ -1,7 +1,9 @@
-#define CATCH_CONFIG_RUNNER
-#include <catch.hpp>
+#define DOCTEST_CONFIG_IMPLEMENT
+#include <doctest.h>
 
 int main(int argc, char *argv[])
 {
-  return Catch::Session().run(argc, argv);
+  doctest::Context ctx;
+  ctx.applyCommandLine(argc, argv);
+  return ctx.run();
 }

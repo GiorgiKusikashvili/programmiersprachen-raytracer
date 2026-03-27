@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.14 FATAL_ERROR)
 cmake_policy(VERSION 3.14)
 
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(FRAMEWORK_NAME framework)
@@ -20,7 +20,7 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/external)
 add_definitions(-DGLEW_STATIC)
 
 # build GLFW
-set(GLFW_DIRECTORY glfw-3.2.1)
+set(GLFW_DIRECTORY glfw-3.4)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/external/${GLFW_DIRECTORY}/include)
 
 set(GLFW_INSTALL OFF CACHE STRING "" FORCE)
@@ -46,11 +46,11 @@ endif()
 #file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/external/${NANOVG_DIRECTORY}/example/Roboto-Regular.ttf DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 #file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/external/${NANOVG_DIRECTORY}/example/Roboto-Regular.ttf DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/source/)
 
-# Use catch for testing
-set(CATCH_DIRECTORY catch2)
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/external/${CATCH_DIRECTORY})
+# Use doctest for testing
+set(DOCTEST_DIRECTORY doctest)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/external/${DOCTEST_DIRECTORY})
 
-set(GLM_DIRECTORY glm-0.9.5.3)
+set(GLM_DIRECTORY glm-1.0.1)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/external/${GLM_DIRECTORY})
 
 ################################

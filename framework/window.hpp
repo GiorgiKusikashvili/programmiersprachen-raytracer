@@ -16,10 +16,8 @@
 #include <GLFW/glfw3.h>
 #include <vector>
 
-#define GLM_FORCE_RADIANS
 #include <glm/vec2.hpp>
 #include <glm/vec3.hpp>
-#include <glm/gtx/multiple.hpp>
 
 #include <array>
 #include <string>
