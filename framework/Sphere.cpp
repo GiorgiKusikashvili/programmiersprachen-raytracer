@@ -6,7 +6,7 @@
     glm::vec3 center_;
     float radius_;
 
-    //Aufgabe 6.3: Der Konstruktor reicht Name und Farbe an die Basisklasse weiter!
+    //Aufgabe 6.4 und 6.5: Der Konstruktor reicht Name und Farbe an die Basisklasse weiter!
    Sphere:: Sphere(glm::vec3 const& center, float radius,std::string const& name, Color const& color)
     : center_{center}, radius_{radius}, Shape{name, color} {
         /*
