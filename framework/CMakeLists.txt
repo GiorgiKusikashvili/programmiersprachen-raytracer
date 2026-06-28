@@ -24,6 +24,10 @@ add_library(${FRAMEWORK_NAME} STATIC glew.c
   Sphere.h
   Box.h
 
+  shape.cpp
+  sphere.cpp
+  box.cpp
+
 )
 
 # Link the framework against the graphics libraries it depends on

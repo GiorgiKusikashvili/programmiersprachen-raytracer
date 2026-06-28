@@ -1,18 +1,26 @@
-//
-// Created by giorg on 6/28/2026.
-//
+#ifndef SHAPE_H
+#define SHAPE_H
 
-#ifndef RAYTRACER_SHAPE_H
-#define RAYTRACER_SHAPE_H
+#include <string>
+#include <iostream>
+#include "color.hpp"
 
-
-class Shape {//Rein Virtuelle Klasse (Weil sie hat nur rein virtuelle Methoden)
-    public:
-   //Destruktor
+class Shape {
+public:
+    Shape(std::string const& name, Color const& color);
     virtual ~Shape() = default;
 
-    // Rein virtuelle Methoden
     virtual float area() const = 0;
     virtual float volume() const = 0;
+
+    virtual std::ostream& print(std::ostream& os) const;
+
+protected:
+    std::string name_;
+    Color color_;
 };
-#endif //RAYTRACER_SHAPE_H
+
+// Nur die Deklaration des Operators
+std::ostream& operator<<(std::ostream& os, Shape const& s);
+
+#endif // SHAPE_H

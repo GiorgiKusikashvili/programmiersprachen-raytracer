@@ -1,42 +1,20 @@
-//
-// Created by giorg on 6/28/2026.
-//
+#ifndef SPHERE_H
+#define SPHERE_H
 
-#ifndef RAYTRACER_BOX_H
-#define RAYTRACER_BOX_H
 #include "shape.h"
-#include "glm/vec3.hpp"
-#include "cmath"
+#include <glm/vec3.hpp>
 
-class Box: public Shape {
-    public:
-    Box(glm::vec3 const& min, glm::vec3 const& max):max_{max}, min_{min} {}
+class Sphere : public Shape {
+public:
+    Sphere(glm::vec3 const& center, float radius, std::string const& name, Color const& color);
 
-    float area() const override {
-        /* MAX   MIN
-         * (x) - (x) =a   -->Breite
-         * (y) - (y) =b   -->Länge
-         * (z) - (z) =c   -->Tiefe
-         */
-        float a = std::abs(max_.x - min_.x);
-        float b = std::abs(max_.y - min_.y);
-        float c = std::abs(max_.z - min_.z);
-        return 2.0f * ((a * b) + (a * c) + (b * c));//Formel für area
-    }
-    float volume() const override {
-        float a = std::abs(max_.x - min_.x);
-        float b = std::abs(max_.y - min_.y);
-        float c = std::abs(max_.z - min_.z);
+    float area() const override;
+    float volume() const override;
+    std::ostream& print(std::ostream& os) const override;
 
-        return a*b*c;
-    }
-
-    private:
-    glm::vec3 const& min_;
-    glm::vec3 const& max_;
-    //float radius_;
+private:
+    glm::vec3 center_;
+    float radius_;
 };
 
-
-
-#endif //RAYTRACER_BOX_H
+#endif // SPHERE_H
