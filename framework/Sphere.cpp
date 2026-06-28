@@ -1,11 +1,5 @@
-//
-// Created by giorg on 6/28/2026.
-//
 
-#ifndef RAYTRACER_SPHERE_H
-#define RAYTRACER_SPHERE_H
-
-#include "Shape.cpp"
+#include "Sphere.h"
 #include "glm/vec3.hpp"
 #include <cmath>
 
@@ -22,18 +16,18 @@
         */
     }
 
-    float Sphere::area() const override {
+    float Sphere::area() const  {
         return 4.0f * M_PI * radius_ * radius_;
     }
 
-    float Sphere::volume() const override {
+    float Sphere::volume() const {
         return (4.0f/3.0f) * M_PI * radius_ * radius_*radius_;
     }
-    std::ostream& Sphere::print(std::ostream& os) const override {
+    std::ostream& Sphere::print(std::ostream& os) const  {
         Shape::print(os); //  Aufruf der Basisklasse für Name & Farbe
         os << ", Typ: Kugel, Zentrum: (" << center_.x << "," << center_.y << "," << center_.z << "), Radius: " << radius_;
         return os;
     }
 
 
-#endif //RAYTRACER_SPHERE_H
+
