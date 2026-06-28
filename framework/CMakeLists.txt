@@ -18,7 +18,13 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/..)
 add_library(${FRAMEWORK_NAME} STATIC glew.c
   ${FRAMEWORK_SOURCE}
   ${FRAMEWORK_INLINE}
-  ${FRAMEWORK_HEADER})
+  ${FRAMEWORK_HEADER}
+
+  Shape.h
+  Sphere.h
+  Box.h
+
+)
 
 # Link the framework against the graphics libraries it depends on
 target_link_libraries(${FRAMEWORK_NAME}
