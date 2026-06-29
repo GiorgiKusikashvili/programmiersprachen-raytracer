@@ -23,6 +23,8 @@ add_library(${FRAMEWORK_NAME} STATIC glew.c
   Shape.h
   Sphere.h
   Box.h
+  Ray.h
+  HitPoint.h
 
   shape.cpp
   sphere.cpp
