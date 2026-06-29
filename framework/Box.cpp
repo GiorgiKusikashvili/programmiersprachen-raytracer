@@ -9,8 +9,12 @@
 #include "cmath"
 
 
-  Box::Box(glm::vec3 const& min, glm::vec3 const& max,std::string const& name, Color const& color):max_{max}, min_{min},Shape{name, color} {}
-
+  Box::Box(glm::vec3 const& min, glm::vec3 const& max,std::string const& name, Color const& color):max_{max}, min_{min},Shape{name, color} {
+      std::cout << "[Konstruktor] Sphere '" << name_ << "' wurde erstellt.\n";
+  }
+Box::~Box() {
+      std::cout << "[Destruktor] Sphere '" << name_ << "' wurde gelöscht.\n";
+  }
     float Box::area() const  {
         /* MAX   MIN
          * (x) - (x) =a   -->Breite

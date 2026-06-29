@@ -17,6 +17,12 @@
     center_ = center;
     radius_ = radius;
         */
+       std::cout << "[Konstruktor] Sphere '" << name_ << "' wurde erstellt.\n";
+   }
+
+
+Sphere::~Sphere() {
+        std::cout << "[Destruktor] Sphere '" << name_ << "' wurde gelöscht.\n";
     }
 
     float Sphere::area() const  {
@@ -55,6 +61,8 @@ HitPoint Sphere::intersect(Ray const& ray) const {
            hit.point = ray.point_at_parameter(scalar_distance); // p(t) = o + t * d
            hit.direction = norm_dir;
        }
+
+
 
        return hit;
    }

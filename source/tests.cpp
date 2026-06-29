@@ -2,6 +2,7 @@
 #define GLM_ENABLE_EXPERIMENTAL
 #include <doctest.h>
 #include <iostream>
+#include <memory>
 #include <glm/vec3.hpp>
 
 #include "sphere.h"
@@ -102,8 +103,50 @@ TEST_CASE("intersect_ray_sphere")
   REQUIRE(hit.intersected == true);
   REQUIRE(hit.distance == doctest::Approx(4.0f));
   REQUIRE(hit.name == "Kugel_6.6");
-  REQUIRE(hit.point.z == doctest::Approx(4.0f)); // Strahl trifft bei z=4 
+  REQUIRE(hit.point.z == doctest::Approx(4.0f)); // Strahl trifft bei z=4
   REQUIRE(hit.direction.z == doctest::Approx(1.0f));
+}
+
+TEST_CASE("Aufgabe 6.7: Statischer und Dynamischer Typ mit Smart Pointers")
+{
+  std::cout << "\n--- TEST START: Aufgabe 6.7 ---\n";
+  Color red{255.0f, 0.0f, 0.0f};
+  glm::vec3 position{0.0f, 0.0f, 0.0f};
+
+  std::shared_ptr<Sphere> s1 = std::make_shared<Sphere>(position, 1.2f, "sphere0", red);
+  std::shared_ptr<Shape> s2 = std::make_shared<Sphere>(position, 1.2f, "sphere1", red);
+
+  s1->print(std::cout); std::cout << "\n";
+  s2->print(std::cout); std::cout << "\n";
+  std::cout << "--- TEST ENDE: Aufgabe 6.7 ---\n\n";
+
+  CHECK(true);
+}
+
+TEST_CASE("Aufgabe 6.8: Virtuelle Destruktoren und Aufrufreihenfolge")
+{
+  std::cout << "\n--- TEST START: Aufgabe 6.8 ---\n";
+  Color red{255.0f, 0.0f, 0.0f};
+  glm::vec3 position{0.0f, 0.0f, 0.0f};
+
+  std::cout << "--- Konstruktion s1 ---\n";
+  Sphere* s1 = new Sphere{position, 1.2f, "sphere0", red};
+
+  std::cout << "--- Konstruktion s2 ---\n";
+  Shape* s2 = new Sphere{position, 1.2f, "sphere1", red};
+
+  std::cout << "--- Print-Aufrufe ---\n";
+  s1->print(std::cout); std::cout << "\n";
+  s2->print(std::cout); std::cout << "\n";
+
+  std::cout << "--- Destruktion s1 ---\n";
+  delete s1;
+
+  std::cout << "--- Destruktion s2 ---\n";
+  delete s2;
+  std::cout << "--- TEST ENDE: Aufgabe 6.8 ---\n\n";
+
+  CHECK(true);
 }
 
 int main(int argc, char *argv[])
